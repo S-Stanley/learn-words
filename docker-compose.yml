@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14.5
+    ports:
+      - 3300:3300
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+      - ./databases/:/databases/
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+volumes:
+  db_volume:
+    external: true
