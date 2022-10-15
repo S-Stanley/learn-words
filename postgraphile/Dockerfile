@@ -1,7 +1,10 @@
 FROM node:alpine
 
-RUN npm install -g postgraphile
-RUN npm install -g postgraphile-plugin-connection-filter
+WORKDIR /app
 
-EXPOSE 5000
-ENTRYPOINT ["postgraphile", "-n", "0.0.0.0"]
+RUN npm init -y
+RUN npm i postgraphile express cors postgraphile-plugin-connection-filter
+
+COPY index.js index.js
+
+CMD node index.js

@@ -18,7 +18,8 @@ services:
         - db
       ports:
         - 5433:5433
-      command: ["--connection", "postgres://postgres@db:5432/dev", "--port", "5433", "--schema", "public", "--append-plugins", "postgraphile-plugin-connection-filter"]
+      environment:
+        - db_uri=postgres://postgres@db:5432/dev
 
 volumes:
   db_volume:
