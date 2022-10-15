@@ -8,3 +8,5 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 \i types.sql;
 
 \i schemas/public.sql;
+
+\i fixtures/users-fixtures.sql;

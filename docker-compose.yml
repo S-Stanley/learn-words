@@ -10,6 +10,15 @@ services:
       - ./databases/:/databases/
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
+  postgraphile:
+      restart: always
+      build:
+        context: ./postgraphile
+      depends_on:
+        - db
+      ports:
+        - 5433:5433
+      command: ["--connection", "postgres://postgres@db:5432/dev", "--port", "5433", "--schema", "public", "--append-plugins", "postgraphile-plugin-connection-filter"]
 
 volumes:
   db_volume:
