@@ -1,0 +1,42 @@
+# Roadmap
+
+- [x] postgreSQL
+- [x] apolloJS
+- [x] postgraphile
+- [x] docker
+- [x] fixtures
+- [x] react
+- [x] yarn
+- [x] nodejs
+- [x] graphQL
+- [ ] gitlab
+- [ ] mineral-ui
+- [ ] react-hook-form
+- [ ] yup
+- [ ] envrc
+- [ ] storybook
+- [ ] react shared components
+- [ ] jest
+- [ ] postgresql triggers
+- [ ] postgresql functions
+- [ ] gitlab-ci
+- [ ] fastAPI
+- [ ] pgtap
+- [ ] golang-migrate
+- [ ] lerna
+- [ ] mailcatcher
+- [ ] prometheus
+- [ ] sentry
+- [ ] grafana
+- [ ] loki
+- [ ] postHog
+- [ ] metabase
+- [ ] puppeteer
+- [ ] git hooks
+- [ ] postgresql rls (row level secutiry)
+- [ ] postgresql rbac (role base access control)
+- [ ] graphile-worker
+- [ ] pass
+- [ ] gpg keys
+- [ ] terraform
+- [ ] ansible
