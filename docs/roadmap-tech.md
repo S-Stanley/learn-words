@@ -15,28 +15,28 @@
 - [ ] envrc
 - [ ] storybook
 - [ ] react shared components
-- [ ] jest
+- [ ] postgresql rls (row level secutiry)
+- [ ] postgresql rbac (role base access control)
 - [ ] postgresql triggers
 - [ ] postgresql functions
+- [ ] jest
+- [ ] puppeteer
 - [ ] gitlab-ci
-- [ ] fastAPI
 - [ ] pgtap
-- [ ] golang-migrate
-- [ ] mineral-ui
 - [ ] lerna
 - [ ] mailcatcher
 - [ ] prometheus
 - [ ] sentry
 - [ ] grafana
+- [ ] mineral-ui
 - [ ] loki
 - [ ] postHog
 - [ ] metabase
-- [ ] puppeteer
 - [ ] git hooks
-- [ ] postgresql rls (row level secutiry)
-- [ ] postgresql rbac (role base access control)
 - [ ] graphile-worker
 - [ ] pass
 - [ ] gpg keys
 - [ ] terraform
 - [ ] ansible
+- [ ] golang-migrate
+- [ ] fastAPI

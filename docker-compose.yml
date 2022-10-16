@@ -10,10 +10,10 @@ services:
       - ./databases/:/databases/
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
-  postgraphile:
+  graphql-api:
       restart: always
       build:
-        context: ./postgraphile
+        context: ./services/graphql-api
       depends_on:
         - db
       ports:
