@@ -10,8 +10,8 @@
 - [x] nodejs
 - [x] graphQL
 - [x] gitlab
-- [ ] react-hook-form
-- [ ] yup
+- [x] react-hook-form
+- [x] yup
 - [ ] envrc
 - [ ] storybook
 - [ ] react shared components

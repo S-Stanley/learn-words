@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 const App = () => {
 
@@ -11,7 +13,13 @@ const App = () => {
     const inputAnswer = useRef();
     const buttonNextQuestion = useRef();
 
-    const { reset, getValues, ...methods } = useForm();
+    const { reset, getValues, ...methods } = useForm({
+        resolver: yupResolver(
+            Yup.object().shape({
+                inputAnswerRegister: Yup.string().required()
+            })
+        )
+    });
 
     const { loading, error, data } = useQuery(gql`
         query getNextWord (
