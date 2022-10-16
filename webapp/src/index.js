@@ -9,6 +9,12 @@ import {
     ApolloProvider
 } from "@apollo/client";
 
+import {
+    BrowserRouter,
+    Route,
+    Routes
+} from 'react-router-dom';
+
 const client = new ApolloClient({
     uri: 'http://127.0.0.1:5433/graphql',
     cache: new InMemoryCache()
@@ -18,7 +24,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <ApolloProvider client={client}>
-            <App />
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<App/>} />
+                </Routes>
+            </BrowserRouter>
         </ApolloProvider>
     </React.StrictMode>
 );
