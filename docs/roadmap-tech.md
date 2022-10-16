@@ -9,8 +9,7 @@
 - [x] yarn
 - [x] nodejs
 - [x] graphQL
-- [ ] gitlab
-- [ ] mineral-ui
+- [x] gitlab
 - [ ] react-hook-form
 - [ ] yup
 - [ ] envrc
@@ -23,6 +22,7 @@
 - [ ] fastAPI
 - [ ] pgtap
 - [ ] golang-migrate
+- [ ] mineral-ui
 - [ ] lerna
 - [ ] mailcatcher
 - [ ] prometheus
