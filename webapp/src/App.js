@@ -1,16 +1,17 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-
 import { useQuery, gql } from "@apollo/client";
+import { useForm } from 'react-hook-form';
 
 const App = () => {
 
     const [offset, setOffset] = useState(0);
-    const [errors, setErrors] = useState([]);
-    const [answer, setAnswers] = useState('');
+    const [errAnswer, setErrAnswer] = useState([]);
     const [explanation, setExplanation] = useState(false);
 
     const inputAnswer = useRef();
     const buttonNextQuestion = useRef();
+
+    const { reset, getValues, ...methods } = useForm();
 
     const { loading, error, data } = useQuery(gql`
         query getNextWord (
@@ -49,15 +50,15 @@ const App = () => {
 
     const nextQuestion = () => {
         setExplanation(false);
-        setAnswers('');
+        reset();
         setOffset(offset + 1);
         inputAnswer?.current?.focus();
     }
 
-    const checkResult = () => {
-        if (answer.toLowerCase() !== data?.allWords?.nodes[0].toLearn.toLowerCase()) {
+    const checkResult = (values) => {
+        if (values?.inputAnswerRegister?.toLowerCase() !== data?.allWords?.nodes[0].toLearn.toLowerCase()) {
             setExplanation(true);
-            setErrors([...errors, ...data?.allWords?.nodes]);
+            setErrAnswer([...errAnswer, ...data?.allWords?.nodes]);
             // buttonNextQuestion?.current?.focus();
         } else {
             nextQuestion();
@@ -83,16 +84,28 @@ const App = () => {
             {explanation ? (
                 <div>
                     <p>Error!</p>
-                    <p>You wrote: {answer.toLowerCase()}</p>
+                    <p>You wrote: {methods.watch('inputAnswerRegister')?.toLowerCase()}</p>
                     <p>It was: {data?.allWords?.nodes[0].toLearn.toLowerCase()}</p>
                     <button onClick={nextQuestion} ref={buttonNextQuestion}>Next question</button>
                 </div>
             ) : (
                 <div>
-                    <p>{offset + 1}/{data?.allWords?.totalCount + 1} {data?.allWords?.nodes[0].inFrench}</p>
-                    <p>{errors.length} errors for the moment</p>
-                    <input ref={inputAnswer} type='text' value={answer} onChange={(e) => setAnswers(e.target.value)} onKeyUp={validate_with_enter}/>
-                    <button onClick={checkResult}>Try</button>
+                    <form
+                        onSubmit={methods.handleSubmit(checkResult)}
+                    >
+                        <p>{offset + 1}/{data?.allWords?.totalCount + 1} {data?.allWords?.nodes[0].inFrench}</p>
+                        <p>{errAnswer.length} errors for the moment</p>
+                        <input
+                            ref={inputAnswer}
+                            type='text'
+                            onKeyUp={validate_with_enter}
+                            { ...methods.register('inputAnswerRegister', { required: true }) }
+                        />
+                        { methods.formState.errors.inputAnswerRegister &&
+                            <span>This field is required</span>
+                        }
+                        <input type="submit"/>
+                    </form>
                 </div>
             )}
         </Fragment>
